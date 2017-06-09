@@ -13,6 +13,7 @@
 		44DDD4791EEA72820018030D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44DDD4781EEA72820018030D /* Assets.xcassets */; };
 		44DDD47C1EEA72820018030D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44DDD47A1EEA72820018030D /* LaunchScreen.storyboard */; };
 		44DDD4871EEA72820018030D /* tcpipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDD4861EEA72820018030D /* tcpipTests.swift */; };
+		44DDD4971EEA98AE0018030D /* TcpipSocket.c in Sources */ = {isa = PBXBuildFile; fileRef = 44DDD4951EEA98AE0018030D /* TcpipSocket.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,9 @@
 		44DDD4821EEA72820018030D /* tcpipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tcpipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DDD4861EEA72820018030D /* tcpipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tcpipTests.swift; sourceTree = "<group>"; };
 		44DDD4881EEA72820018030D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44DDD4911EEA96D20018030D /* tcpip-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tcpip-Bridging-Header.h"; sourceTree = "<group>"; };
+		44DDD4951EEA98AE0018030D /* TcpipSocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TcpipSocket.c; sourceTree = "<group>"; };
+		44DDD4961EEA98AE0018030D /* TcpipSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TcpipSocket.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,9 @@
 				44DDD4781EEA72820018030D /* Assets.xcassets */,
 				44DDD47A1EEA72820018030D /* LaunchScreen.storyboard */,
 				44DDD47D1EEA72820018030D /* Info.plist */,
+				44DDD4911EEA96D20018030D /* tcpip-Bridging-Header.h */,
+				44DDD4951EEA98AE0018030D /* TcpipSocket.c */,
+				44DDD4961EEA98AE0018030D /* TcpipSocket.h */,
 			);
 			path = tcpip;
 			sourceTree = "<group>";
@@ -147,6 +154,7 @@
 					44DDD46D1EEA72820018030D = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 776PS9KY2H;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					44DDD4811EEA72820018030D = {
@@ -201,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44DDD4971EEA98AE0018030D /* TcpipSocket.c in Sources */,
 				44DDD4741EEA72820018030D /* ViewController.swift in Sources */,
 				44DDD4721EEA72820018030D /* AppDelegate.swift in Sources */,
 			);
@@ -343,12 +352,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 776PS9KY2H;
 				INFOPLIST_FILE = tcpip/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fransiska.tcpip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "tcpip/tcpip-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -357,12 +369,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 776PS9KY2H;
 				INFOPLIST_FILE = tcpip/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fransiska.tcpip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "tcpip/tcpip-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
