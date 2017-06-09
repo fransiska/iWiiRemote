@@ -26,6 +26,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         ipTextField.delegate = self
         portTextField.delegate = self
+        
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: #selector(ViewController.didTapView))
+        self.view.addGestureRecognizer(tapRecognizer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,7 +37,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //Hide the keyboard
+        ipTextField.resignFirstResponder()
+        portTextField.resignFirstResponder()
+        return true;
+    }
+    
+    func didTapView() {
+        self.view.endEditing(true)
+    }
+    
     //MARK: Actions
     @IBAction func connectSocket(_ sender: UIButton) {
         sock = tcpipSocket_connect(ipTextField.text,Int32(portTextField.text!)!)
