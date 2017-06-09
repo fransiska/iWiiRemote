@@ -1,3 +1,4 @@
-# SwiftTCPIP
+# iWiiRemote
 
-A simple iOS application programmed in Swift, which demonstrates communication using TCP/IP socket programmed in C.
+Control desktop's mouse by iOS devices with accelerometer.
+To be used with a server run on the desktop.
