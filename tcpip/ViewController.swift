@@ -8,21 +8,24 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     //MARK: Properties
     
     @IBOutlet weak var ipTextField: UITextField!
+    @IBOutlet weak var portTextField: UITextField!
     @IBOutlet weak var connectButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     
-    var sock:Int32 = 0
+    var sock:Int32 = -1
     
     //MARK: Default functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        ipTextField.delegate = self
+        portTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,7 +36,7 @@ class ViewController: UIViewController {
 
     //MARK: Actions
     @IBAction func connectSocket(_ sender: UIButton) {
-        sock = tcpipSocket_connect("127.0.0.1",12345)
+        sock = tcpipSocket_connect(ipTextField.text,Int32(portTextField.text!)!)
     }
     
     @IBAction func sendMessage(_ sender: UIButton) {
