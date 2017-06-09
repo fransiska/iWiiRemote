@@ -29,7 +29,7 @@ int tcpipSocket_connect(const char* serverName, int portno) {
     printf("error opening socket\n");
     return -1;
   }
-  printf("sock is %d",sock);
+  printf("sock is %d\n",sock);
 
   //setup the sockaddr structure
   serverAddress.sin_family = AF_INET;

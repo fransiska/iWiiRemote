@@ -10,13 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //MARK: Properties
+    
+    @IBOutlet weak var ipTextField: UITextField!
+    @IBOutlet weak var connectButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
+    
+    var sock:Int32 = 0
+    
+    //MARK: Default functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-        let sock = tcpipSocket_connect("10.10.0.114",12345)
-        tcpipSocket_send(sock,"Hi, I'm C")
-        tcpipSocket_close(sock)
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,5 +31,17 @@ class ViewController: UIViewController {
     }
 
 
+    //MARK: Actions
+    @IBAction func connectSocket(_ sender: UIButton) {
+        sock = tcpipSocket_connect("127.0.0.1",12345)
+    }
+    
+    @IBAction func sendMessage(_ sender: UIButton) {
+        tcpipSocket_send(sock,"Hi, I'm C")
+    }
+    
+    @IBAction func closeSocket(_ sender: UIButton) {
+        tcpipSocket_close(sock)
+    }
 }
 
