@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import CoreMotion
+import os.log
+
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
@@ -16,6 +19,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var portTextField: UITextField!
     @IBOutlet weak var connectButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
+
+    let motionManager = CMMotionManager()
     
     var sock:Int32 = -1
     
@@ -27,9 +32,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
         ipTextField.delegate = self
         portTextField.delegate = self
         
+        // Touch to hide keyboard
         let tapRecognizer = UITapGestureRecognizer()
         tapRecognizer.addTarget(self, action: #selector(ViewController.didTapView))
         self.view.addGestureRecognizer(tapRecognizer)
+        
+        // Accelerometer data
+        // get data of accelerometer async
+        if motionManager.isDeviceMotionAvailable {
+            motionManager.startDeviceMotionUpdates(to: OperationQueue.current!, withHandler: {
+                (deviceMotion, error) -> Void in
+                if(error == nil) {
+                    self.sendMessage(deviceMotion: deviceMotion!)
+                } else {
+                    os_log("Error in device motion updates", type: .debug)
+                }
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +69,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func updateConnectButton(connected: Bool) {
         connectButton.isEnabled = !connected
+    }
+    
+    func degrees(radians:Double) -> Double {
+        return 180 / .pi * radians
+    }
+
+    func sendMessage(deviceMotion:CMDeviceMotion) {
+        let attitude = deviceMotion.attitude
+        let roll = degrees(radians: attitude.roll)
+        let pitch = degrees(radians: attitude.pitch)
+        tcpipSocket_send(sock, "r:\(roll) p:\(pitch);")
     }
     
     //MARK: Actions
