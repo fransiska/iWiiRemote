@@ -48,9 +48,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+    func updateConnectButton(connected: Bool) {
+        connectButton.isEnabled = !connected
+    }
+    
     //MARK: Actions
     @IBAction func connectSocket(_ sender: UIButton) {
         sock = tcpipSocket_connect(ipTextField.text,Int32(portTextField.text!)!)
+        if(sock > 0) {
+            updateConnectButton(connected: true)
+        }
     }
     
     @IBAction func sendMessage(_ sender: UIButton) {
@@ -59,6 +66,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func closeSocket(_ sender: UIButton) {
         tcpipSocket_close(sock)
+        updateConnectButton(connected: false)
     }
 }
 
