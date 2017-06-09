@@ -46,20 +46,11 @@ int tcpipSocket_connect(const char* serverName, int portno) {
 }
 
 void tcpipSocket_send(int sock, const char* message) {
-  char buffer[256];
-  
   ssize_t n = write(sock, message, strlen(message));
   if(n < 0) {
     printf("error writing to socket\n");
     return;
   }
-
-  n = read(sock, buffer, 255);
-  if(n < 0) {
-    printf("error reading from socket");
-    return;
-  }
-  printf("message from the server: %s",buffer);
 }
 
 void tcpipSocket_close(int sock) {

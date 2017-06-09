@@ -36,26 +36,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let tapRecognizer = UITapGestureRecognizer()
         tapRecognizer.addTarget(self, action: #selector(ViewController.didTapView))
         self.view.addGestureRecognizer(tapRecognizer)
-        
-        // Accelerometer data
-        // get data of accelerometer async
-        if motionManager.isDeviceMotionAvailable {
-            motionManager.startDeviceMotionUpdates(to: OperationQueue.current!, withHandler: {
-                (deviceMotion, error) -> Void in
-                if(error == nil) {
-                    self.sendMessage(deviceMotion: deviceMotion!)
-                } else {
-                    os_log("Error in device motion updates", type: .debug)
-                }
-            })
-        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    // Hide keyboard by return key
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //Hide the keyboard
         ipTextField.resignFirstResponder()
@@ -63,10 +51,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true;
     }
     
+    // Hide keyboard by tap
     func didTapView() {
         self.view.endEditing(true)
     }
     
+    // Disable button once connected
     func updateConnectButton(connected: Bool) {
         connectButton.isEnabled = !connected
     }
@@ -75,6 +65,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return 180 / .pi * radians
     }
 
+    // Handle accelerometer updates
     func sendMessage(deviceMotion:CMDeviceMotion) {
         let attitude = deviceMotion.attitude
         let roll = degrees(radians: attitude.roll)
@@ -87,6 +78,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         sock = tcpipSocket_connect(ipTextField.text,Int32(portTextField.text!)!)
         if(sock > 0) {
             updateConnectButton(connected: true)
+            
+            // Accelerometer data
+            // get data of accelerometer async
+            if motionManager.isDeviceMotionAvailable {
+                motionManager.startDeviceMotionUpdates(to: OperationQueue.current!, withHandler: {
+                    (deviceMotion, error) -> Void in
+                    if(error == nil) {
+                        self.sendMessage(deviceMotion: deviceMotion!)
+                    } else {
+                        os_log("Error in device motion updates", type: .debug)
+                    }
+                })
+            }
         }
     }
     
@@ -95,6 +99,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func closeSocket(_ sender: UIButton) {
+        motionManager.stopDeviceMotionUpdates()
         tcpipSocket_close(sock)
         updateConnectButton(connected: false)
     }
