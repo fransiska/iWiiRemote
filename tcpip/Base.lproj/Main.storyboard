@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Eva-Yw-ldv">
-                                <rect key="frame" x="20" y="70" width="335" height="205"/>
+                                <rect key="frame" x="20" y="70" width="335" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="exb-XJ-qiz">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
@@ -57,20 +57,8 @@
                                             <action selector="connectSocket:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1jH-Ab-3oL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQA-4A-2Bi">
-                                        <rect key="frame" x="0.0" y="110" width="335" height="40"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="VPT-HZ-gir"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="message"/>
-                                        <connections>
-                                            <action selector="sendMessage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LyY-OZ-qUg"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lrk-nV-klp">
-                                        <rect key="frame" x="0.0" y="165" width="335" height="40"/>
+                                        <rect key="frame" x="0.0" y="110" width="335" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="YVL-Uo-aAS"/>

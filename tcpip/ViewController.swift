@@ -93,11 +93,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
-    @IBAction func sendMessage(_ sender: UIButton) {
-        tcpipSocket_send(sock,"Hi, I'm C")
-    }
-    
+        
     @IBAction func closeSocket(_ sender: UIButton) {
         motionManager.stopDeviceMotionUpdates()
         tcpipSocket_close(sock)
