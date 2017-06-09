@@ -12,7 +12,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    void tcpipSocket_connect();
+  int tcpipSocket_connect(const char* serverName, int portno);
+  void tcpipSocket_send(int sock, const char* message);
+  void tcpipSocket_close(int sock);
 #ifdef __cplusplus
 }
 #endif

@@ -14,7 +14,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        tcpipSocket_connect();
+        let sock = tcpipSocket_connect("10.10.0.114",12345)
+        tcpipSocket_send(sock,"Hi, I'm C")
+        tcpipSocket_close(sock)
     }
 
     override func didReceiveMemoryWarning() {
