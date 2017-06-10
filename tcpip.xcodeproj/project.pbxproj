@@ -14,6 +14,7 @@
 		44DDD47C1EEA72820018030D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44DDD47A1EEA72820018030D /* LaunchScreen.storyboard */; };
 		44DDD4871EEA72820018030D /* tcpipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDD4861EEA72820018030D /* tcpipTests.swift */; };
 		44DDD4971EEA98AE0018030D /* TcpipSocket.c in Sources */ = {isa = PBXBuildFile; fileRef = 44DDD4951EEA98AE0018030D /* TcpipSocket.c */; };
+		44DDD4991EEBED1A0018030D /* MouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDD4981EEBED1A0018030D /* MouseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		44DDD4911EEA96D20018030D /* tcpip-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tcpip-Bridging-Header.h"; sourceTree = "<group>"; };
 		44DDD4951EEA98AE0018030D /* TcpipSocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TcpipSocket.c; sourceTree = "<group>"; };
 		44DDD4961EEA98AE0018030D /* TcpipSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TcpipSocket.h; sourceTree = "<group>"; };
+		44DDD4981EEBED1A0018030D /* MouseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MouseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				44DDD4711EEA72820018030D /* AppDelegate.swift */,
 				44DDD4731EEA72820018030D /* ViewController.swift */,
 				44DDD4751EEA72820018030D /* Main.storyboard */,
+				44DDD4981EEBED1A0018030D /* MouseViewController.swift */,
 				44DDD4781EEA72820018030D /* Assets.xcassets */,
 				44DDD47A1EEA72820018030D /* LaunchScreen.storyboard */,
 				44DDD47D1EEA72820018030D /* Info.plist */,
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44DDD4991EEBED1A0018030D /* MouseViewController.swift in Sources */,
 				44DDD4971EEA98AE0018030D /* TcpipSocket.c in Sources */,
 				44DDD4741EEA72820018030D /* ViewController.swift in Sources */,
 				44DDD4721EEA72820018030D /* AppDelegate.swift in Sources */,
@@ -430,6 +434,7 @@
 				44DDD48D1EEA72820018030D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		44DDD48E1EEA72820018030D /* Build configuration list for PBXNativeTarget "tcpipTests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +443,7 @@
 				44DDD4901EEA72820018030D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
