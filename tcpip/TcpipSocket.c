@@ -22,20 +22,18 @@ int tcpipSocket_connect(const char* serverName, int portno) {
 
   int sock;
   struct sockaddr_in serverAddress;
-  
-  //create a listening socket
-  sock = socket(AF_INET, SOCK_STREAM, 0);
-  if(sock < 0) {
-    printf("error opening socket\n");
-    return -1;
-  }
-  printf("sock is %d\n",sock);
 
   //setup the sockaddr structure
   serverAddress.sin_family = AF_INET;
   serverAddress.sin_port = htons(portno);
   serverAddress.sin_addr.s_addr = inet_addr(serverName);
 
+  //create a listening socket
+  sock = socket(AF_INET, SOCK_STREAM, 0);
+  if(sock < 0) {
+    printf("error opening socket\n");
+    return -1;
+  }
 
   if(connect(sock, (struct sockaddr*) &serverAddress, sizeof(serverAddress)) < 0) {
     printf("error on connecting\n");

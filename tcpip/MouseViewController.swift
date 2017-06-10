@@ -7,29 +7,35 @@
 //
 
 import UIKit
+import os.log
 
 class MouseViewController: UIViewController {
+    
+    var sock:Int32 = -1
 
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateButtonState()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func updateButtonState() {
+        leftButton.isEnabled = (sock>0)
+        rightButton.isEnabled = (sock>0)
     }
-    */
-
+    
+    @IBAction func mouseButtonClicked(_ sender: UIButton) {
+        if (sender === leftButton) {
+            tcpipSocket_send(sock, "left;")
+        } else if (sender === rightButton) {
+            tcpipSocket_send(sock, "right;")
+        }
+    }
 }

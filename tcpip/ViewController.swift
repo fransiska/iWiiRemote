@@ -24,9 +24,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     var sock:Int32 = -1
     
+    //MARK: segue
     @IBAction func unwindToMainView(sender: UIStoryboardSegue) {
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        guard let mouse = segue.destination as? MouseViewController else {
+            fatalError("Unexpected destination: \(segue.destination)")
+        }
+        mouse.sock = sock
+    }
+
     
     //MARK: Default functions
     
@@ -101,6 +113,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func closeSocket(_ sender: UIButton) {
         motionManager.stopDeviceMotionUpdates()
         tcpipSocket_close(sock)
+        sock = -1
         updateConnectButton(connected: false)
     }
 }
