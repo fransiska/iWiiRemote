@@ -116,7 +116,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="t68-j9-w2l">
-                                <rect key="frame" x="16" y="20" width="343" height="205"/>
+                                <rect key="frame" x="16" y="20" width="343" height="400"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2x-t2-dmt">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
@@ -131,11 +131,11 @@
                                             <segue destination="lyp-G7-WAF" kind="unwind" unwindAction="unwindToMainViewWithSender:" id="GnE-GN-Wgl"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="DsC-75-ThC">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DsC-75-ThC">
                                         <rect key="frame" x="0.0" y="55" width="343" height="150"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYQ-Xl-lOk">
-                                                <rect key="frame" x="0.0" y="0.0" width="170.5" height="150"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="164" height="150"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="left"/>
@@ -144,7 +144,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQT-hL-TX5">
-                                                <rect key="frame" x="172.5" y="0.0" width="170.5" height="150"/>
+                                                <rect key="frame" x="179" y="0.0" width="164" height="150"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="right"/>
@@ -157,10 +157,22 @@
                                             <constraint firstAttribute="height" constant="150" id="QKW-x9-UDq"/>
                                         </constraints>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="goL-q3-e0F">
+                                        <rect key="frame" x="0.0" y="220" width="343" height="180"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="VbE-ST-6kj"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="5uU-xG-XcC" appends="YES" id="tes-Sp-rF4"/>
+                                        </connections>
+                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="t68-j9-w2l" secondAttribute="trailing" id="8r3-vY-m3N"/>
                             <constraint firstItem="t68-j9-w2l" firstAttribute="top" secondItem="Vfo-Ww-CXM" secondAttribute="bottom" id="SZr-1V-PAu"/>
@@ -170,12 +182,15 @@
                     <connections>
                         <outlet property="leftButton" destination="BYQ-Xl-lOk" id="Rrm-Za-uJE"/>
                         <outlet property="rightButton" destination="CQT-hL-TX5" id="Z6j-6I-oub"/>
+                        <outlet property="swipeView" destination="goL-q3-e0F" id="YqN-2S-e7M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbv-K4-fl1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="lyp-G7-WAF" userLabel="Exit" sceneMemberID="exit"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Man-sL-OOD"/>
+                <swipeGestureRecognizer direction="right" id="5uU-xG-XcC"/>
             </objects>
-            <point key="canvasLocation" x="860" y="37"/>
+            <point key="canvasLocation" x="860" y="36.431784107946029"/>
         </scene>
     </scenes>
 </document>
